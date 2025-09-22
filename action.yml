@@ -25,6 +25,6 @@ runs:
     - name: 'Testing GitHub Token'
       shell: bash
       run: |
-        echo "GITHUB_TOKEN is ${{ secrets.GITHUB_TOKEN }}"
+        echo "GITHUB_TOKEN is $GITHUB_TOKEN"
         echo "API Host is ${{ inputs.api_host }}"
-        curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "${{ inputs.api_host }}/api/v2/github-token"
+        curl -H "Authorization: Bearer $GITHUB_TOKEN" "${{ inputs.api_host }}/api/v2/github-token"
