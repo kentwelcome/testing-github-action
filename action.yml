@@ -1,5 +1,7 @@
 name: 'Testing Github Action Marketplace'
 
+description: 'A GitHub Action to test GitHub Action Marketplace features.'
+
 author: 'Kent Huang'
 
 branding:
