@@ -12,6 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Testing Github Action Marketplace
-      uses: kentwelcome/testing-github-action@v1
+      uses: kentwelcome/testing-github-action@v1.1
       with:
         api_host: 'https://44cae958008b.ngrok-free.app'
