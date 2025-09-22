@@ -32,5 +32,9 @@ runs:
         echo "Repository is ${{ github.repository }}"
         curl -H "Authorization: Bearer $GITHUB_TOKEN" \
           https://api.github.com/repos/${{ github.repository }}
-        curl -H "Authorization: Bearer $GITHUB_TOKEN" "${{ inputs.api_host }}/api/v2/repo/${{ github.repository }}/verify-token"
-        
+        content=$(curl -s -X GET -H "Authorization: Bearer $GITHUB_TOKEN" "${{ inputs.api_host }}/api/v2/repo/${{ github.repository }}/verify-token")
+        echo "Response from API: $content"
+        project_id=$(echo jq -r '.project_id' <<< "${content}")
+        echo "Project ID is $project_id"
+        organization_id=$(echo jq -r '.organization_id' <<< "${content}")
+        echo "Organization ID is $organization_id"
