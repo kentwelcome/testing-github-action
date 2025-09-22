@@ -1,0 +1,27 @@
+name: 'Testing Github Action Marketplace'
+
+author: 'Kent Huang'
+
+branding:
+  icon: 'upload-cloud'
+  color: 'orange'
+
+inputs:
+  api_host:
+    description: 'The Recce Cloud API host URL.'
+    required: false
+    default: 'https://cloud.datarecce.io' 
+
+runs:
+  using: "composite"
+  steps:
+    - name: 'Set up Python'
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: 'Testing GitHub Token'
+      run: |
+        echo "GITHUB_TOKEN is ${{ secrets.GITHUB_TOKEN }}"
+        echo "API Host is ${{ inputs.api_host }}"
+        curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "${{ inputs.api_host }}/api/v2/github-token"
